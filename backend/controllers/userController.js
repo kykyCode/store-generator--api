@@ -8,6 +8,9 @@ async function show(req, res, next){
     const user = await prisma.user.findUnique({
         where: {
             id: parseInt(userId)
+        },
+        include: {
+            Address: true,
         }
     })
     if(!user){
@@ -15,13 +18,28 @@ async function show(req, res, next){
         return
     }
     delete user.password
-    delete user.id
     delete user.refreshToken
     res.send(user);
 }
 
+async function update(req, res, next){
+    try{
+        const userId = req.params.id;
+        const user = await prisma.user.update({
+            data: req.body,
+            where: {
+                id: parseInt(userId)
+            }
+        })
+        res.send(user)
+    }catch(error){
+        next(error)
+    }
+}
+
 module.exports = {
-    show
+    show,
+    update
 }
 
 

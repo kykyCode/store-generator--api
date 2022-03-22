@@ -33,10 +33,10 @@ model User{
   password String
   role Int @default(1)
   createdAt DateTime @default(now())
-  refreshToken String? 
+  refreshToken String?
   Address Address? @relation(fields: [addressId], references: [id])
   addressId Int?
-
+  Store Store[]
 }
 
 model Address{
@@ -46,34 +46,50 @@ model Address{
   country String
   flat_number String
   postal_code String
-  state String
+  state String?
   type String
   createdAt DateTime @default(now())
   user User[]
+  store Store[]
+}
+
+model Store{
+  id Int @id @default(autoincrement())
+  name String
+  domain String
+  phone String
+  email String
+  Address Address? @relation(fields: [addressId], references: [id])
+  addressId Int?
+  Customization Customization? @relation(fields: [customizationId], references: [id])
+  customizationId Int?
+  User User? @relation(fields: [userId], references: [id])
+  userId Int?
 }
 
 model Customization{
   id Int @id @default(autoincrement())
-  logo Boolean @default(true)
-  contact Boolean @default(true)
-  about Boolean @default(true)
-  columns Int @default(2)
-  radius Int @default(0)
-  primaryBtn_color String
-  primaryBtn_background String
-  secondaryBtn_color String
-  secondaryBtn_border String
-  navigation_color String
-  main_color String
-  footer_color String
-  instagram Boolean @default(false)
-  instagramUrl String
-  facebook Boolean @default(false)
-  facebookUrl String
-  tiktok Boolean @default(false)
-  tiktokUrl String
-  youtube Boolean @default(false)
-  youtubeUrl String
-  footer_text String
+  logo Boolean? @default(true)
+  contact Boolean? @default(true)
+  about Boolean? @default(true)
+  columns Int? @default(2)
+  radius Int? @default(0)
+  primaryBtn_color String? @default("#ffffff")
+  primaryBtn_background String? @default("#3244a8")
+  secondaryBtn_color String? @default("#3244a8")
+  secondaryBtn_border String? @default("#3244a8")
+  navigation_color String? @default("#36438a")
+  main_color String? @default("#6676cc")
+  footer_color String? @default("#36438a")
+  instagram Boolean? @default(false)
+  instagramUrl String?
+  facebook Boolean? @default(false)
+  facebookUrl String?
+  tiktok Boolean? @default(false)
+  tiktokUrl String?
+  youtube Boolean? @default(false)
+  youtubeUrl String?
+  footer_text String?
   createdAt DateTime @default(now())
+  store Store[]
 }
