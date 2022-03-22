@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {PrismaClient} = require('@prisma/client')
 const jwt = require('jsonwebtoken');
 const AuthController = require('../controllers/authController')
+const UserController = require('../controllers/userController')
 const AuthMiddleware = require('../middlewares/auth')
 
 const prisma = new PrismaClient()
@@ -15,6 +16,7 @@ router.get('/', async (req, res, next)=>{
 router.post('/register', AuthController.register);
 router.post('/login',AuthController.login);
 router.post('/logout', AuthController.logout)
+router.get('/users/:id', AuthMiddleware.authenticate, UserController.show)
 router.get('/example-data', AuthMiddleware.authenticate, (req, res)=>{
     res.send({name: 'tomek', surname:'jendraszewski'});
 })

@@ -60,9 +60,14 @@ async function login(req, res, next){
                     res.cookie('FIRST_NAME', user.first_name, {
                         maxAge: 3600000,
                     })
+                    res.cookie('X', user.id, {
+                        maxAge: 3600000,
+                    })
                     res.cookie('LAST_NAME', user.last_name, {
                         maxAge: 3600000,
                     })
+                    delete user.password
+                    delete user.accessToken
                     res.send(user);
                 })
             }
