@@ -1,0 +1,12 @@
+<div class="navigation__container w-100 d-flex justify-content-between align-items-center" style="background-color: <%= store.customization.navigation_color %>">
+    <% if(store.customization.logo){ %><a href="/"><div class="fw-600 fs-28 text-capitalize"><%- subdomain %></div></a><% } %>
+    <div class="d-flex">
+            <% if(store.customization.contact){ %><a href="/contact"><div class="px-5 fs-18 text-black">Contact</div></a><% } %>
+            <% if(store.customization.about){ %><a href="/about"><div class="px-5 fs-18 text-black">About</div></a><% } %>
+    </div>
+    <div class="d-flex">
+        <a href="/products"><span class="px-4 material-icons" >checkroom</span></a>
+        <a href="/checkout"><span class="px-4 material-icons">shopping_cart_checkout</span></a>
+        <a href="/login"><span class="px-4 material-icons">login</span></a>
+    </div>
+</div>

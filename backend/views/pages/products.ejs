@@ -1,0 +1,16 @@
+<h2>Products</h2>
+<div class="products-store-container">
+    <% for(let product of products){ %>
+            <div class="product-container">
+                <a href="/products/<%= product.id %>">
+                    <div class="product-image">
+                        <img style="width: 100%; max-width: 250px;" src="/products_images/<%= product.front_image %>" alt="">
+                    </div>
+                    <div class="fs-22 fw-600 mt-1"><%= product.name %></div>
+                    <p><%= product.description %></p>
+                    <div class="fs-18 fw-600 mt-1">$<%= product.price %></div>
+                </a>  
+            </div>
+    <% } %>
+</div>
+

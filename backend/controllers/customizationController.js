@@ -1,7 +1,7 @@
 const {PrismaClient} = require('@prisma/client')
 const prisma = new PrismaClient();
 
-async function create(req, res, next){
+/*async function create(req, res, next){
     try{
         const customization = await prisma.customization.create({
             data: req.body
@@ -9,6 +9,16 @@ async function create(req, res, next){
         res.send(customization);
     }catch(error){
         next(error)
+    }
+}*/
+
+async function create(req, res, next){
+    try{
+        const data = req.body;
+        await prisma.customization.create({})
+        res.send(data);
+    }catch(error){
+        next(error);
     }
 }
 

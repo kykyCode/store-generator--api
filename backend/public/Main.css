@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  }
+
+body{
+    padding: 0;
+    margin: 0;  
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+
+.test2{
+    color:red;
+}
+
+.footer__container{
+    transform: translateY(30px);
+    width: 100%;
+    height: 250px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    color:white;
+}   
+
+.w-100{
+    width: 100%;
+}
+
+.navigation__container{
+    padding: 10px 50px;
+    width: 100%;    
+    height: 80px;   
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.fw-600{
+    font-weight: 600;
+}
+
+.fs-18{
+    font-size: 18px;
+}
+.fs-22{
+    font-size: 22px;
+}
+
+.fs-28{
+    font-size: 28px;
+}
+
+.text-black{
+    color:black;
+}
+
+.products-store-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-container{
+    margin-top: 40px;
+    text-align: center;
+    width: 30%;
+    word-break: break-all;
+    transition: .2s ease;
+}
+.product-container:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.main-container{
+    height: fit-content;
+}
+
+.single-product-container{
+    padding: 60px 0;
+    justify-content: space-between;
+}
+
+.single-product-image{
+
+}
+
+.single-product-config{
+
+}
+
+.fs-36{
+    font-size: 36px;
+}

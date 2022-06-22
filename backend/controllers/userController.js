@@ -1,6 +1,4 @@
-const bcrypt = require('bcrypt');
 const {PrismaClient} = require('@prisma/client')
-const jwt = require('jsonwebtoken');
 const prisma = new PrismaClient();
 
 async function show(req, res, next){
@@ -9,8 +7,14 @@ async function show(req, res, next){
         where: {
             id: parseInt(userId)
         },
-        include: {
-            Address: true,
+        include:{
+            store: {
+                include:{
+                    customization: true,
+                    address: true,
+                }
+            }
+
         }
     })
     if(!user){

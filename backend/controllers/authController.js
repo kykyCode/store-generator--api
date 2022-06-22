@@ -41,33 +41,13 @@ async function login(req, res, next){
                     if(err) return err;
                     if(!result) return new Error('Invalid password');
                     const accessToken = jwt.sign(payload, process.env.TOKEN_SECRET, {expiresIn: 1200})
-                    const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: 7200})
-                    try{
-                        user.refreshToken = refreshToken
-                        await prisma.user.update({
-                            where:{
-                                id: user.id
-                            },
-                            data: user
-                        })
-                    }catch(error){
-                        next(err);
-                    }
                     res.cookie('JWT', accessToken, {
                         maxAge: 3600000,
                         httpOnly: true
                     })
-                    res.cookie('FIRST_NAME', user.first_name, {
-                        maxAge: 3600000,
-                    })
-                    res.cookie('X', user.id, {
-                        maxAge: 3600000,
-                    })
-                    res.cookie('LAST_NAME', user.last_name, {
-                        maxAge: 3600000,
-                    })
                     delete user.password
                     delete user.accessToken
+                    delete user.createdAt
                     res.send(user);
                 })
             }
@@ -77,15 +57,20 @@ async function login(req, res, next){
     }
 
 async function logout(req, res, next){
-    res.clearCookie('FIRST_NAME')
-    res.clearCookie('LAST_NAME')
     res.status(202).clearCookie('JWT').send('LOGOUT');
+}
+
+async function isLogged(req, res, next){
+    if(req.cookies['JWT']) {res.send({logged: true, })}
+    else{res.send({logged: false})}
+    
 }
 
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    isLogged
 }
 
 

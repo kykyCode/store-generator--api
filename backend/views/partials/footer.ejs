@@ -1,0 +1,13 @@
+<div class="footer__container" style="background-color: <%= store.customization['footer_color'] %>">
+    <div class="container py-5 d-flex">
+        <div class="fs-22 fw-600 col-md-4"><%- subdomain %></div>
+        <div class="col-md-4"><%- store.customization.footer_text %></div>
+        <div class="col-md-4 d-flex justify-content-end">
+            <% if(store.customization.facebook){ %> <a class="px-3" target="_blank" href="https://<%- store.customization.facebookUrl %>">FB</a> <% } %>
+            <% if(store.customization.instagram){ %> <a class="px-3" target="_blank" href="https://<%- store.customization.instagramUrl %>">IG</a> <% } %>
+            <% if(store.customization.tiktok){ %> <a class="px-3" target="_blank" href="https://<%- store.customization.tiktokUrl %>">TT</a> <% } %>
+            <% if(store.customization.youtube){ %> <a class="px-3" target="_blank" href="https://<%- store.customization.youtubeUrl %>">YT</a> <% } %>
+        </div>
+        <i class="bi bi-instagram"></i>
+    </div>
+</div>

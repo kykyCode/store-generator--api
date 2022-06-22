@@ -1,0 +1,12 @@
+<%
+    getColors = function(variantsArray){
+        let colors = [];
+        variantsArray.forEach(variant=>{
+            if(!colors.includes(variant.color)){
+                colors.push(variant.color)
+            }
+        })
+        return colors;
+    }
+    
+%>

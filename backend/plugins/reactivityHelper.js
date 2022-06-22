@@ -1,0 +1,1 @@
+setTimeout(()=>{console.log('dziala dziala')}, 500)
